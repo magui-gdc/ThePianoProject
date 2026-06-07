@@ -26,11 +26,26 @@ export function renderPiano(containerId) {
 }
 
 export function highlightScale(scale, containerId) {
+  const enharmonicMap = {
+    "E#": "F",
+    "B#": "C",
+    "Fb": "E",
+    "Cb": "B",
+    "Bb": "A#",
+    "Eb": "D#",
+    "Ab": "G#",
+    "Db": "C#",
+    "Gb": "F#"
+  };
+
+  // Normalize scale notes
+  const normalizedScale = scale.map(note => enharmonicMap[note] || note);
+
   const container = document.getElementById(containerId);
   const keys = container.querySelectorAll(".key");
 
   keys.forEach((key) => {
-    if (scale.includes(key.dataset.note)) {
+    if (normalizedScale.includes(key.dataset.note)) {
       key.classList.add("highlight");
     } else {
       key.classList.remove("highlight");

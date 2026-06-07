@@ -15,6 +15,14 @@ fetch("./scales.json")
 
     scaleSelector.addEventListener("change", (event) => {
       const selectedScale = event.target.value;
-      highlightScale(scales[selectedScale], "piano-container");
+      const selectedNotesDiv = document.getElementById("selected-notes");
+
+      if (selectedScale) {
+        const notes = scales[selectedScale];
+        highlightScale(notes, "piano-container");
+        selectedNotesDiv.textContent = `Notes: ${notes.join(", ")}`;
+      } else {
+        selectedNotesDiv.textContent = "";
+      }
     });
   });
