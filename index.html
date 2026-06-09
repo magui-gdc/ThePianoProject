@@ -5,40 +5,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Piano Scales</title>
   <style>
-    .key {
-      display: inline-block;
-      width: 40px;
-      height: 150px;
-      border: 1px solid black;
-      margin: 0 2px;
+    #piano-container {
+      display: flex;
+      align-items: flex-start;
       position: relative;
+      height: 150px;
+      width: fit-content;
     }
+
+    .key {
+      box-sizing: border-box;
+      border: 1px solid black;
+      cursor: pointer;
+    }
+
     .key.white {
       background: white;
+      width: 40px;
+      height: 150px;
+      z-index: 0;
     }
+
     .key.black {
       background: black;
-      width: 30px;
-      height: 100px;
-      position: absolute;
-      margin-left: -15px;
+      width: 26px;
+      height: 95px;
+      margin-left: -13px;
+      margin-right: -13px;
       z-index: 1;
     }
-    .key.highlight {
-      background: yellow;
-    }
-    #piano-container {
-      position: relative;
-      height: 150px;
-    }
+
+    .key.highlight.white { background: #7ec8e3; }
+    .key.highlight.black { background: #0077a8; }
   </style>
 </head>
 <body>
-  <div id="piano-container"></div>
-  <select id="scale-selector">
-    <option value="">Select a scale</option>
-  </select>
-  <div id="selected-notes"></div>
-  <script type="module" src="./index.js"></script>
+<div id="piano-container"></div>
+<select id="scale-selector">
+  <option value="">Select a scale</option>
+</select>
+<div id="selected-notes"></div>
+<script type="module" src="./index.js"></script>
 </body>
 </html>
